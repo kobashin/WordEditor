@@ -61,11 +61,15 @@ class Test(QtWidgets.QDialog):
         Replace df values with the data on the UI
         """
         self.df.at[self.index, 'Word'] = self.ui.lineEdit.text()
-        self.df.at[self.index, 'Page'] = self.ui.lineEdit_2.text()
-        self.df.at[self.index, 'Count'] = self.ui.lineEdit_3.text()
+        self.df.at[self.index, 'Date'] = self.ui.lineEdit_2.text()
+        self.df.at[self.index, 'Page'] = self.ui.lineEdit_3.text()
+        self.df.at[self.index, 'Count'] = self.ui.lineEdit_4.text()
         self.df.at[self.index, 'Definition'] = self.ui.textEdit.toPlainText()
         self.df.at[self.index, 'Example'] = self.ui.textEdit_2.toPlainText()
         self.df.at[self.index, 'Text'] = self.ui.textEdit_3.toPlainText()
+        self.df.at[self.index, 'Synonym'] = self.ui.textEdit_4.toPlainText()
+        self.df.at[self.index, 'WordFinder'] = self.ui.textEdit_5.toPlainText()
+        self.df.at[self.index, 'Memo'] = self.ui.textEdit_6.toPlainText()
 
     def slot3(self):
         """
@@ -100,19 +104,27 @@ class Test(QtWidgets.QDialog):
 
         # get the word from the columns
         word = self.df['Word'][index] if not pd.isna(self.df['Word'][index]) else ''
+        date = self.df['Date'][index] if not pd.isna(self.df['Date'][index]) else ''
         page = self.df['Page'][index] if not pd.isna(self.df['Page'][index]) else ''
         count = self.df['Count'][index] if not pd.isna(self.df['Count'][index]) else ''
         definition = self.df['Definition'][index] if not pd.isna(self.df['Definition'][index]) else ''
         example = self.df['Example'][index] if not pd.isna(self.df['Example'][index]) else ''
         text = self.df['Text'][index] if not pd.isna(self.df['Text'][index]) else ''
+        synonym = self.df['Synonym'][index] if not pd.isna(self.df['Synonym'][index]) else ''
+        wordFinder = self.df['WordFinder'][index] if not pd.isna(self.df['WordFinder'][index]) else ''
+        memo = self.df['Memo'][index] if not pd.isna(self.df['Memo'][index]) else ''
 
         # set the word to the lineEdit
         self.ui.lineEdit.setText(word)
-        self.ui.lineEdit_2.setText(page)
-        self.ui.lineEdit_3.setText(count)
+        self.ui.lineEdit_2.setText(date)
+        self.ui.lineEdit_3.setText(page)
+        self.ui.lineEdit_4.setText(count)
         self.ui.textEdit.setText(definition)
         self.ui.textEdit_2.setText(example)
         self.ui.textEdit_3.setText(text)
+        self.ui.textEdit_4.setText(synonym)
+        self.ui.textEdit_5.setText(wordFinder)
+        self.ui.textEdit_6.setText(memo)
 
 
 if __name__ == '__main__':
